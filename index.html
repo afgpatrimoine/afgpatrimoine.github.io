@@ -1,1 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFG Patrimoine - Gestion de Patrimoine & Courtage</title>
+    <style>
+        :root {
+            --primary: #0a1f3a; 
+            --secondary: #cba052; 
+            --light-bg: #f5f5f5;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: var(--secondary);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* En-tête */
+        header {
+            background: linear-gradient(rgba(10, 31, 58, 0.9), rgba(10, 31, 58, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
+            color: var(--text-light);
+            padding: 8rem 5%;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 300;
+        }
+        .btn {
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 3px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #dfb25e;
+        }
+
+        /* Section À Propos */
+        .about {
+            padding: 5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            background-color: #fff;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-text h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* Section Expertises */
+        .expertise {
+            padding: 5rem 5%;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+        .expertise h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .card {
+            background: #fff;
+            padding: 2.5rem 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--secondary);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Section Contact */
+        .contact {
+            padding: 5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            background-color: #fff;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .contact-info h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .contact-info strong {
+            color: var(--secondary);
+        }
+        form {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: var(--primary);
+            color: var(--text-light);
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* Footer & Mentions Légales */
+        footer {
+            background-color: var(--primary);
+            color: #ccc;
+            padding: 4rem 5% 2rem 5%;
+            font-size: 0.85rem;
+        }
+        .legal-info {
+            max-width: 900px;
+            margin: 0 auto 2rem auto;
+            text-align: left;
+            line-height: 1.8;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+        }
+        .legal-info h4 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+        .legal-info p {
+            margin-bottom: 0.8rem;
+        }
+        .legal-info strong {
+            color: var(--text-light);
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 1rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">AFG PATRIMOINE</div>
+        <ul>
+            <li><a href="#propos">À Propos</a></li>
+            <li><a href="#expertises">Expertises</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Sécurisez et valorisez votre patrimoine</h1>
+        <p>Expertise, indépendance et stratégie sur-mesure. Votre partenaire de confiance pour la gestion de vos actifs et la réalisation de vos projets financiers.</p>
+        <a href="#contact" class="btn">Prendre rendez-vous</a>
+    </header>
+
+    <section id="propos" class="about">
+        <div class="about-text">
+            <h2>Une expertise reconnue</h2>
+            <p>Dirigée par <strong>Mme Anne-France GRYMONPREZ</strong>, la société AFG Patrimoine met son expertise au service de vos objectifs de vie. Que vous souhaitiez constituer, valoriser ou transmettre votre patrimoine, nous vous offrons un accompagnement personnalisé et indépendant.</p>
+            <p>Notre cabinet se distingue par une approche globale qui prend en compte votre situation familiale, professionnelle et fiscale, afin de vous proposer des stratégies d'investissement parfaitement alignées avec vos ambitions.</p>
+        </div>
+    </section>
+
+    <section id="expertises" class="expertise">
+        <h2>Nos Domaines d'Intervention</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Conseil en Investissement</h3>
+                <p>Analyse de votre situation et élaboration de stratégies de placements financiers adaptées à votre profil de risque et à vos objectifs.</p>
+            </div>
+            <div class="card">
+                <h3>Courtage en Assurance</h3>
+                <p>Recherche et négociation des meilleures couvertures pour protéger votre famille, vos biens et optimiser votre fiscalité.</p>
+            </div>
+            <div class="card">
+                <h3>Opérations de Banque</h3>
+                <p>Accompagnement pour vos financements complexes, restructuration de crédits et services de paiement.</p>
+            </div>
+            <div class="card">
+                <h3>Transaction Immobilière</h3>
+                <p>Expertise en immobilier physique, transaction sur immeubles et fonds de commerce pour diversifier vos actifs tangibles.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-info">
+            <h2>Contactez-nous</h2>
+            <p>Prenez rendez-vous pour une étude patrimoniale personnalisée.</p>
+            <br>
+            <p><strong>📍 Adresse :</strong><br>3155 route de Linselles<br>59890 Quesnoy-sur-Deûle</p>
+            <p><strong>📞 Téléphone :</strong><br>+33 6 29 17 16 54</p>
+        </div>
+        
+        <!-- Formulaire de contact -->
+        <form action="https://formspree.io/f/VOTRE_CODE_FORMSPREE" method="POST">
+            <input type="text" name="nom" placeholder="Nom & Prénom" required>
+            <input type="email" name="email" placeholder="Adresse Email" required>
+            <input type="tel" name="telephone" placeholder="Numéro de téléphone">
+            <textarea name="message" rows="5" placeholder="Votre message ou demande d'information..." required></textarea>
+            <button type="submit">Envoyer la demande</button>
+        </form>
+    </section>
+
+    <!-- Pied de page avec Mentions Légales Obligatoires -->
+    <footer>
+        <div class="legal-info">
+            <h4>Mentions Légales & Réglementaires</h4>
+            <p><strong>Éditeur du site :</strong> AFG PATRIMOINE, représentée par Mme Anne-France GRYMONPREZ.</p>
+            <p><strong>Siège social :</strong> 3155 route de Linselles, 59890 Quesnoy-sur-Deûle</p>
+            <p><strong>Immatriculation :</strong> RCS 800 119 653 | <strong>Activité :</strong> Agences immobilières (6831Z)</p>
+            <p><strong>ORIAS :</strong> Inscription sous le n° 14001958 (www.orias.fr) en qualité de : Courtier en assurance, Courtier en opérations de banque et services de paiement, Conseiller en investissement financier.</p>
+            <p><strong>Immobilier :</strong> Transaction sur immeubles et fonds de commerce. Carte Professionnelle (Carte T) n° 59062018000029074 délivrée par la CCI Grand Lille.</p>
+            <p><strong>Assurance Responsabilité Civile (RCP) :</strong> Police n° 2.401.395 / OC100000559 souscrite auprès de ORIA CONSEILS (2 rue Georges Joyeux, 95440 Écouen).</p>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 AFG Patrimoine. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
