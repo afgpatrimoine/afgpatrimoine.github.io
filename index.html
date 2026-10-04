@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AFG Patrimoine - Gestion de Patrimoine & Courtage</title>
+    
+    <!-- Importation des polices haut de gamme Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Importation des icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary: #0a1f3a; 
-            --secondary: #cba052; 
-            --light-bg: #f5f5f5;
-            --text-dark: #333333;
+            --primary: #0a1f3a; /* Bleu nuit */
+            --secondary: #d4af37; /* Or métallique plus luxueux */
+            --light-bg: #fdfdfd;
+            --text-dark: #2c3e50;
             --text-light: #ffffff;
         }
 
@@ -17,12 +26,17 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
+            font-family: 'Montserrat', sans-serif; /* Police moderne pour le texte */
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.7;
+            background-color: var(--light-bg);
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif; /* Police prestigieuse pour les titres */
         }
 
         /* Navigation */
@@ -36,68 +50,80 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
         nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
             color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: color 0.3s;
         }
         nav a:hover {
             color: var(--secondary);
         }
 
-        /* En-tête */
+        /* En-tête / Hero Section */
         header {
-            background: linear-gradient(rgba(10, 31, 58, 0.9), rgba(10, 31, 58, 0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
+            background: linear-gradient(rgba(10, 31, 58, 0.85), rgba(10, 31, 58, 0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover fixed;
             color: var(--text-light);
-            padding: 8rem 5%;
+            padding: 10rem 5%;
             text-align: center;
         }
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             color: var(--secondary);
+            font-weight: 700;
         }
         header p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem auto;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
             font-weight: 300;
+            letter-spacing: 0.5px;
         }
         .btn {
             background-color: var(--secondary);
             color: var(--primary);
-            padding: 15px 30px;
+            padding: 16px 35px;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 3px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            display: inline-block;
         }
         .btn:hover {
-            background-color: #dfb25e;
+            background-color: #e5c358;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
 
         /* Section À Propos */
         .about {
-            padding: 5rem 5%;
+            padding: 6rem 5%;
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
             background-color: #fff;
         }
@@ -107,57 +133,77 @@
         }
         .about-text h2 {
             color: var(--primary);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
         }
         .about-text p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             text-align: justify;
+            font-size: 1.05rem;
+            color: #555;
         }
 
         /* Section Expertises */
         .expertise {
-            padding: 5rem 5%;
-            background-color: var(--light-bg);
+            padding: 6rem 5%;
+            background-color: #f9f9f9;
             text-align: center;
         }
         .expertise h2 {
             color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
         }
         .card {
             background: #fff;
-            padding: 2.5rem 1.5rem;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--secondary);
-            transition: transform 0.3s;
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border-bottom: 4px solid transparent;
+            transition: all 0.4s ease;
         }
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+        }
+        .card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
         }
         .card h3 {
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
         .card p {
             font-size: 0.95rem;
-            color: #555;
+            color: #666;
         }
 
         /* Section Contact */
         .contact {
-            padding: 5rem 5%;
+            padding: 6rem 5%;
             display: flex;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 4rem;
             background-color: #fff;
         }
         .contact-info {
@@ -166,93 +212,118 @@
         }
         .contact-info h2 {
             color: var(--primary);
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
         }
         .contact-info p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
-        .contact-info strong {
+        .contact-info i {
             color: var(--secondary);
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
         }
         form {
             flex: 1;
             min-width: 300px;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
+            background: #f9f9f9;
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
         input, textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
             font-size: 1rem;
+            font-family: inherit;
+            background-color: #fff;
+            transition: border 0.3s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
         }
         button {
             background-color: var(--primary);
             color: var(--text-light);
             border: none;
-            padding: 15px;
+            padding: 16px;
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            border-radius: 3px;
-            transition: background 0.3s;
+            border-radius: 2px;
+            transition: all 0.3s ease;
         }
         button:hover {
             background-color: var(--secondary);
-            color: var(--primary);
+            color: var(--text-dark);
         }
 
         /* Footer & Mentions Légales */
         footer {
             background-color: var(--primary);
-            color: #ccc;
-            padding: 4rem 5% 2rem 5%;
+            color: #b0b8c1;
+            padding: 5rem 5% 2rem 5%;
             font-size: 0.85rem;
         }
         .legal-info {
-            max-width: 900px;
-            margin: 0 auto 2rem auto;
+            max-width: 1000px;
+            margin: 0 auto 3rem auto;
             text-align: left;
-            line-height: 1.8;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 2rem;
+            line-height: 1.9;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 3rem;
         }
         .legal-info h4 {
             color: var(--secondary);
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .legal-info p {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
         .legal-info strong {
-            color: var(--text-light);
+            color: #ffffff;
+            font-weight: 600;
         }
         .copyright {
             text-align: center;
-            margin-top: 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
         
         /* Responsive */
         @media (max-width: 768px) {
             nav { flex-direction: column; gap: 1rem; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
-            header h1 { font-size: 2.2rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+            header h1 { font-size: 2.5rem; }
+            header { padding: 8rem 5% 5rem 5%; }
+            form { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">AFG PATRIMOINE</div>
+        <div class="logo">
+            <i class="fas fa-landmark"></i> AFG PATRIMOINE
+        </div>
         <ul>
-            <li><a href="#propos">À Propos</a></li>
+            <li><a href="#propos">Le Cabinet</a></li>
             <li><a href="#expertises">Expertises</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -276,18 +347,22 @@
         <h2>Nos Domaines d'Intervention</h2>
         <div class="grid">
             <div class="card">
+                <i class="fas fa-chart-line"></i>
                 <h3>Conseil en Investissement</h3>
                 <p>Analyse de votre situation et élaboration de stratégies de placements financiers adaptées à votre profil de risque et à vos objectifs.</p>
             </div>
             <div class="card">
+                <i class="fas fa-shield-alt"></i>
                 <h3>Courtage en Assurance</h3>
                 <p>Recherche et négociation des meilleures couvertures pour protéger votre famille, vos biens et optimiser votre fiscalité.</p>
             </div>
             <div class="card">
+                <i class="fas fa-university"></i>
                 <h3>Opérations de Banque</h3>
                 <p>Accompagnement pour vos financements complexes, restructuration de crédits et services de paiement.</p>
             </div>
             <div class="card">
+                <i class="fas fa-building"></i>
                 <h3>Transaction Immobilière</h3>
                 <p>Expertise en immobilier physique, transaction sur immeubles et fonds de commerce pour diversifier vos actifs tangibles.</p>
             </div>
@@ -296,24 +371,22 @@
 
     <section id="contact" class="contact">
         <div class="contact-info">
-            <h2>Contactez-nous</h2>
-            <p>Prenez rendez-vous pour une étude patrimoniale personnalisée.</p>
-            <br>
-            <p><strong>📍 Adresse :</strong><br>3155 route de Linselles<br>59890 Quesnoy-sur-Deûle</p>
-            <p><strong>📞 Téléphone :</strong><br>+33 6 29 17 16 54</p>
+            <h2>Échangeons sur vos projets</h2>
+            <p style="margin-bottom: 2rem; color: #555;">Prenez rendez-vous pour une étude patrimoniale personnalisée. Notre cabinet vous reçoit sur rendez-vous.</p>
+            <p><i class="fas fa-map-marker-alt"></i> <span><strong>Adresse</strong><br>3155 route de Linselles<br>59890 Quesnoy-sur-Deûle</span></p>
+            <p><i class="fas fa-phone-alt"></i> <span><strong>Téléphone</strong><br>+33 6 29 17 16 54</span></p>
         </div>
         
-        <!-- Formulaire de contact -->
+        <!-- Formulaire de contact fonctionnel -->
         <form action="https://formspree.io/f/mnpjawvl" method="POST">
             <input type="text" name="nom" placeholder="Nom & Prénom" required>
             <input type="email" name="email" placeholder="Adresse Email" required>
             <input type="tel" name="telephone" placeholder="Numéro de téléphone">
             <textarea name="message" rows="5" placeholder="Votre message ou demande d'information..." required></textarea>
-            <button type="submit">Envoyer la demande</button>
+            <button type="submit">Envoyer ma demande</button>
         </form>
     </section>
 
-    <!-- Pied de page avec Mentions Légales Obligatoires -->
     <footer>
         <div class="legal-info">
             <h4>Mentions Légales & Réglementaires</h4>
